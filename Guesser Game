@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+class Player {
+    int playernum;
+public:
+    int takeplayerinput() {
+        int p;
+        cin >> p;
+        playernum = p;
+        return playernum;
+    }
+};
+
+class Guesser {
+    int guessednum;
+public:
+    int takeguesserinput() {
+        int x;
+        cout << "Give the number for the guesser: " << endl;
+        cin >> x;
+        guessednum = x;
+        return guessednum;
+    }
+};
+
+class Umpire {
+public:
+    int g;
+    int p1num, p2num, p3num;
+
+    void GetTheNumberFromGuesser() {
+        Guesser g1;
+        g = g1.takeguesserinput();
+    }
+
+    void GetTheNumberFromPlayers() {
+        Player p1, p2, p3;
+        cout << "Give the number for player 1: " << endl;
+        p1num = p1.takeplayerinput();
+        cout << "Give the number for player 2: " << endl;
+        p2num = p2.takeplayerinput();
+        cout << "Give the number for player 3: " << endl;
+        p3num = p3.takeplayerinput();
+    }
+
+    void PrintTheResult() {
+        if (g == p1num && g == p2num && g == p3num) {
+            cout << "All players won the game!" << endl;
+        } else if (g == p1num && g == p2num) {
+            cout << "Players 1 and 2 won the game!" << endl;
+        } else if (g == p1num && g == p3num) {
+            cout << "Players 1 and 3 won the game!" << endl;
+        } else if (g == p2num && g == p3num) {
+            cout << "Players 2 and 3 won the game!" << endl;
+        } else if (g == p1num) {
+            cout << "Player 1 won the game!" << endl;
+        } else if (g == p2num) {
+            cout << "Player 2 won the game!" << endl;
+        } else if (g == p3num) {
+            cout << "Player 3 won the game!" << endl;
+        } else {
+            cout << "All players lost the game!" << endl;
+        }
+    }
+};
+
+int main() {
+    cout << "-----------Let's start the Game------------" << endl;
+    Umpire u;
+    u.GetTheNumberFromGuesser();
+    u.GetTheNumberFromPlayers();
+    u.PrintTheResult();
+    cout << "-----------Let's end the Game------------" << endl;
+    return 0;
+}
